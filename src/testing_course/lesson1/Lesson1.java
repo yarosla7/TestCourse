@@ -7,11 +7,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Lesson1 {
-    /* Задание 1
+     /* Задание 1
     Напишите метод findMinMax, находящий в стриме минимальный и максимальный элементы в соответствии порядком, заданным Comparator'ом.
-
     Данный метод принимает на вход 3 элемента:
-
     Stream<? extends T> stream,
     Comparator<? super T> order,
     BiConsumer<? super T, ? super T> minMaxConsumer */
@@ -38,4 +36,3 @@ public class Lesson1 {
                 .forEach(System.out::println);
     }
 }
-
