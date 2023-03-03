@@ -15,8 +15,8 @@ public class Main {
 
         lesson1.findMinMax(nums.stream(),
                 Integer::compareTo,
-                (x, y) -> System.out.println(String.format("min: %s, max: %s", x, y)));
+                (x, y) -> System.out.printf("min: %s, max: %s%n", x, y));
 
-        System.out.println("nums = " + nums);
+        lesson1.Predicate(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17));
     }
 }
