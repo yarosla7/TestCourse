@@ -1,7 +1,8 @@
 package testing_course.lesson2;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
 
@@ -23,29 +24,29 @@ class UserTest {
     @Test
     void shouldGetTwoFields() {
         out = new User(DEFAULT_LOGIN, DEFAULT_EMAIL);
-        Assertions.assertNotNull(out);
-        Assertions.assertEquals("Skankhunt42", out.getLogin());
-        Assertions.assertEquals("ya_russkiy1972@cringe.com", out.getEmail());
+        assertNotNull(out);
+        assertEquals("Skankhunt42", out.getLogin());
+        assertEquals("ya_russkiy1972@cringe.com", out.getEmail());
     } // тест на корректную работу конструктора с передачей в него параметров двух полей
 
     @Test
     void shouldWorkWithEmptyFields() {
         out = new User();
-        Assertions.assertNotNull(out);
+        assertNotNull(out);
     } // тест на создание объекта с пустым конструктором
 
     @Test
     void shouldHaveCorrectEmail() {
         String result = "ss@gmail.com";
         out = new User(DEFAULT_LOGIN, "ss@gmail.com");
-        Assertions.assertTrue(result.contains("@")); //тут идея предлагает поставить conditions: true, полагаю, потому что создаю строку проверяемую уже с этими символами
-        Assertions.assertTrue(result.contains("."));
-        Assertions.assertEquals(result, out.getEmail());
+        assertTrue(result.contains("@")); //тут идея предлагает поставить conditions: true, полагаю, потому что создаю строку проверяемую уже с этими символами
+        assertTrue(result.contains("."));
+        assertEquals(result, out.getEmail());
     } //проверка на содержание собаки и точки в строке имейл
 
     @Test
     void fieldsShouldBeDifferent() {
         out = new User(DEFAULT_LOGIN, DEFAULT_EMAIL);
-        Assertions.assertNotEquals(out.getLogin(), out.getEmail());
+        assertNotEquals(out.getLogin(), out.getEmail());
     } // проверка на то, что логин и почта не equals
 }
