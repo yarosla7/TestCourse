@@ -30,9 +30,10 @@ public class Lesson1 {
     Реализуйте метод, который принимает на вход Список целых чисел и определяет количество четных и выводит их в консоль.
     Решать именно с применением Stream API */
 
-    public void Predicate(List<Integer> integers) {
-        integers.stream()
+    public void predicate(List<Integer> integers) {
+        System.out.println(".count() = " + integers.stream()
                 .filter(x -> x % 2 == 0)
-                .forEach(System.out::println);
+                .peek(System.out::println)
+                .count());
     }
 }
