@@ -24,7 +24,6 @@ class UserTest {
     @Test
     void shouldGetTwoFields() {
         out = new User(DEFAULT_LOGIN, DEFAULT_EMAIL);
-        assertNotNull(out);
         assertEquals("Skankhunt42", out.getLogin());
         assertEquals("ya_russkiy1972@cringe.com", out.getEmail());
     } // тест на корректную работу конструктора с передачей в него параметров двух полей
@@ -32,21 +31,28 @@ class UserTest {
     @Test
     void shouldWorkWithEmptyFields() {
         out = new User();
-        assertNotNull(out);
+        assertNull(out.getLogin());
+        assertNull(out.getEmail());
     } // тест на создание объекта с пустым конструктором
 
     @Test
     void shouldHaveCorrectEmail() {
-        String result = "ss@gmail.com";
-        out = new User(DEFAULT_LOGIN, "ss@gmail.com");
-        assertTrue(result.contains("@")); //тут идея предлагает поставить conditions: true, полагаю, потому что создаю строку проверяемую уже с этими символами
-        assertTrue(result.contains("."));
-        assertEquals(result, out.getEmail());
+        User user = new User();
+        user.setEmail(DEFAULT_EMAIL);
+        assertEquals(DEFAULT_EMAIL, user.getEmail());
     } //проверка на содержание собаки и точки в строке имейл
 
     @Test
+    void invalidEmailTest() {
+        String check = "usersobakadotcom";
+        assertThrows(IllegalArgumentException.class, () -> out.setEmail(check));
+    } //проверка на исключение если email не корректный
+
+    @Test
     void fieldsShouldBeDifferent() {
-        out = new User(DEFAULT_LOGIN, DEFAULT_EMAIL);
-        assertNotEquals(out.getLogin(), out.getEmail());
+        assertThrows(IllegalArgumentException.class,
+                () -> new User("login", "login"));
+        assertThrows(IllegalArgumentException.class,
+                () -> new User("email@gmail.com", "email@gmail.com"));
     } // проверка на то, что логин и почта не equals
 }
